@@ -2059,15 +2059,61 @@ div.goodGuys {
   width: 40%;
   float: left; }
 
+ul p {
+  text-decoration: none;
+  margin: 0;
+  padding-top: 0;
+  float: left;
+  height: 20%;
+  width: 25%;
+  padding: 3%; }
+
 div.badGuys {
   text-align: center;
   margin: 0;
   width: 40%;
   float: left; }
 
-.characterNames {
-  text-decoration: none;
+.startButton {
+  font-size: 30px;
+  width: 25%;
+  height: 20%;
+  margin-top: 6%;
+  margin-bottom: 6%;
+  margin-left: 37.5%;
+  margin-right: 37.5%;
+  text-align: center; }
+
+.fightPage {
+  background-color: #3D3D3A;
+  height: 800px; }
+
+.theArena {
+  width: 95%;
   margin: 0;
-  padding-top: 0; }
+  padding-left: 2.5%;
+  padding-right: 2.5%; }
+
+.goodGuyHere {
+  margin: 0;
+  width: 40%;
+  float: left;
+  background-color: #fff; }
+
+.fightAction {
+  margin: 0;
+  margin-top: 2.5%;
+  font-size: 70px;
+  padding: 0;
+  width: 10%;
+  float: left;
+  background-color: #D42E75;
+  text-align: center; }
+
+.badGuyHere {
+  margin: 0;
+  width: 40%;
+  float: left;
+  background-color: #fff; }
 
 /*# sourceMappingURL=main.css.map */

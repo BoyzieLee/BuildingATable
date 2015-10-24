@@ -2,4 +2,9 @@ import $ from 'jquery';
 import _ from 'underscore';
 import moment from 'moment';
 
-console.log('Hello, World');
+
+import GoodGuy from './goodGuys';
+import BadGuy from './badGuys';
+
+
+console.log('WAT');
