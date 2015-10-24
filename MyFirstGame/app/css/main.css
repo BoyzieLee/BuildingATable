@@ -2079,7 +2079,7 @@ div.badGuys {
   width: 25%;
   height: 20%;
   margin-top: 6%;
-  margin-bottom: 6%;
+  margin-bottom: 12%;
   margin-left: 37.5%;
   margin-right: 37.5%;
   text-align: center; }
@@ -2090,13 +2090,15 @@ div.badGuys {
 
 .theArena {
   width: 95%;
+  height: 80%;
   margin: 0;
   padding-left: 2.5%;
   padding-right: 2.5%; }
 
 .goodGuyHere {
   margin: 0;
-  width: 40%;
+  width: 30%;
+  height: 50%;
   float: left;
   background-color: #fff; }
 
@@ -2112,7 +2114,8 @@ div.badGuys {
 
 .badGuyHere {
   margin: 0;
-  width: 40%;
+  width: 30%;
+  height: 50%;
   float: left;
   background-color: #fff; }
 
