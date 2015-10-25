@@ -2085,17 +2085,21 @@ div.badGuys {
   text-align: center; }
 
 .fightPage {
-  background-color: #3D3D3A;
+  width: 100%;
+  background-color: #E2EBF4;
   height: 800px; }
 
 .theArena {
-  width: 95%;
+  width: 98%;
   height: 80%;
   margin: 0;
+  margin-left: 1%;
+  margin-right: 1%;
   padding-left: 2.5%;
-  padding-right: 2.5%; }
+  padding-right: 2.5%;
+  text-align: center; }
 
-.goodGuyHere {
+.GoodGuyFight {
   margin: 0;
   width: 30%;
   height: 50%;
@@ -2107,12 +2111,12 @@ div.badGuys {
   margin-top: 2.5%;
   font-size: 70px;
   padding: 0;
-  width: 10%;
+  width: 30%;
   float: left;
-  background-color: #D42E75;
+  background-color: #E6E6E6;
   text-align: center; }
 
-.badGuyHere {
+.BadGuyFight {
   margin: 0;
   width: 30%;
   height: 50%;

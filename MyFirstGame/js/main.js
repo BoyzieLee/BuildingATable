@@ -3,8 +3,25 @@ import _ from 'underscore';
 import moment from 'moment';
 
 
-import GoodGuy from './goodGuys';
-import BadGuy from './badGuys';
+
+
+
+// DOM Nodes Selected
+
+
+// Show current (default) health
+
+
+// Setting up ON Events
+
+
+
+  // Generate a random amount of hit points
+
+
+
+  // Then attack!!!
 
 
 console.log('WAT');
+
