@@ -1,4 +1,43 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var BadGuys = function BadGuys() {
+
+  this.health = 100;
+
+  this.hit = function (num) {
+    var hitPoints = num || 10;
+    return this.health = this.health - hitPoints;
+  };
+};
+
+exports["default"] = BadGuys;
+module.exports = exports["default"];
+
+},{}],2:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var GoodGuys = function GoodGuys() {
+
+  this.health = 100;
+
+  this.hit = function (num) {
+    var hitPoints = num || 10;
+    return this.health = this.health - hitPoints;
+  };
+};
+
+console.log(GoodGuys);
+exports["default"] = GoodGuys;
+module.exports = exports["default"];
+
+},{}],3:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -15,19 +54,56 @@ var _moment = require('moment');
 
 var _moment2 = _interopRequireDefault(_moment);
 
+var _goodGuys = require('./goodGuys');
+
+var _goodGuys2 = _interopRequireDefault(_goodGuys);
+
+var _badGuys = require('./badGuys');
+
+var _badGuys2 = _interopRequireDefault(_badGuys);
+
+// Good Guy Instance
+var PrivateBryan = new GoodGuys();
+
+// Bad Guy Instance
+var DateMe = new BadGuys();
+
 // DOM Nodes Selected
+var ggHealth = (0, _jquery2['default'])('.ggHealth');
+var bgHealth = (0, _jquery2['default'])('.bgHealth');
 
 // Show current (default) health
+ggHealth.text(GoodGuyFight.health);
+bgHealth.text(DateMe.health);
 
 // Setting up ON Events
+ggAttack.on('click', function () {
 
-// Generate a random amount of hit points
+  // Generate a random amount of hit points
+  // Then attack!!!
+  var num = _underscore2['default'].random(0, 25);
+  DateMe.hit(num);
 
-// Then attack!!!
+  if (DateMe.health <= 0) {
+    bgHealth.text('Defeated');
+    alert('Mario Wins!!');
+  } else {
+    bgHealth.text(DateMe.health);
+    alert('DateMe Puts Up A Firewall!!!');
+    PrivatBryan.hit(10);
+    ggHealth.css('color', 'red');
+    ggHealth.text(PrivatBryan.health);
+    setTimeout(function () {
+      ggHealth.css('color', 'black');
+    }, 1000);
+  }
+
+  console.log(GoodGuys);
+});
 
 console.log('WAT');
 
-},{"jquery":2,"moment":3,"underscore":4}],2:[function(require,module,exports){
+},{"./badGuys":1,"./goodGuys":2,"jquery":4,"moment":5,"underscore":6}],4:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -9239,7 +9315,7 @@ return jQuery;
 
 }));
 
-},{}],3:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 //! moment.js
 //! version : 2.10.6
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -12435,7 +12511,7 @@ return jQuery;
     return _moment;
 
 }));
-},{}],4:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -13985,7 +14061,7 @@ return jQuery;
   }
 }.call(this));
 
-},{}]},{},[1])
+},{}]},{},[3])
 
 
 //# sourceMappingURL=main.js.map
