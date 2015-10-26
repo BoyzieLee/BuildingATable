@@ -19,6 +19,10 @@ var _vehicleModel = require('./vehicleModel');
 
 var _vehicleModel2 = _interopRequireDefault(_vehicleModel);
 
+window.vehicleModel = _vehicleModel2['default'];
+
+// vehicle.fetch().then(renderVehicle);
+
 console.log('Hello, World');
 
 },{"./vehicleModel":2,"jquery":4,"moment":5,"underscore":6}],2:[function(require,module,exports){
