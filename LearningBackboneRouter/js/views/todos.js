@@ -1,13 +1,18 @@
-function TodosView(collection) {
-  this.collection = collection;
-}
 
-TodosView.prototype = {
-  render: function(){
+
+function proccessData(data) {
+  return data.map(function(item) {
     return `
-    <h2>Something Todo</h2>
-    `;
-  }
+      <li>${item.title}</li>
+    `
+  }).join('');
 }
 
-export defualt todosView;
+function todosTemplate(data) {
+  return `
+    <h2>Something Todo</h2>
+    <ul>${proccessData(data)}</ul>
+  `;
+}
+
+export default todosTemplate
