@@ -1,6 +1,27 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _backbone = require('backbone');
+
+var _backbone2 = _interopRequireDefault(_backbone);
+
+var vehicleModel = _backbone2['default'].Model.extend({
+  urlRoot: 'https://api.parse.com/1/classes/Vehicle',
+  idAttribute: 'objectId'
+});
+
+exports['default'] = vehicleModel;
+module.exports = exports['default'];
+
+},{"backbone":6}],2:[function(require,module,exports){
+'use strict';
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _jquery = require('jquery');
@@ -19,13 +40,84 @@ var _vehicleModel = require('./vehicleModel');
 
 var _vehicleModel2 = _interopRequireDefault(_vehicleModel);
 
+var _vehicleCollection = require("./vehicleCollection");
+
+var _vehicleCollection2 = _interopRequireDefault(_vehicleCollection);
+
+var _vehicleTemplate = require("./vehicleTemplate");
+
+var _vehicleTemplate2 = _interopRequireDefault(_vehicleTemplate);
+
+var APP_ID = '8PIReS0VYHYc9g5M1MNtHbBVnvrYoSx5nTlsApcr';
+var API_Key = 'YC77o1DkAFbPmvm7M9hR9uYsjxEN3Wi481T2zaiy';
+
+_jquery2['default'].ajaxSetup({
+  // creating a custom header instaed of a build in header 'X-'
+  headers: {
+    'X-Parse-Application-Id': APP_ID,
+    'X-Parse-REST-API-Key': API_Key
+  }
+});
+
+var vehicle = new _vehicleCollection2['default']();
+
+function renderVehicle() {
+  var $ul = (0, _jquery2['default'])('<ul></ul>');
+  vehicle.each(function (vehicle) {
+
+    var data = vehicle.toJSON();
+    console.log('data', data);
+    var templateString = (0, _vehicleTemplate2['default'])(data);
+    console.log('templateString', templateString);
+
+    var $li = (0, _jquery2['default'])(templateString);
+
+    $ul.append($li);
+  });
+  (0, _jquery2['default'])('body').html($ul);
+}
+
 window.vehicleModel = _vehicleModel2['default'];
+window.vehicleCollection = _vehicleCollection2['default'];
+window.vehicleTemplate = _vehicleTemplate2['default'];
 
-// vehicle.fetch().then(renderVehicle);
-
+vehicle.fetch().then(renderVehicle);
 console.log('Hello, World');
 
-},{"./vehicleModel":2,"jquery":4,"moment":5,"underscore":6}],2:[function(require,module,exports){
+},{"./vehicleCollection":3,"./vehicleModel":4,"./vehicleTemplate":5,"jquery":7,"moment":8,"underscore":9}],3:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _backbone = require('backbone');
+
+var _backbone2 = _interopRequireDefault(_backbone);
+
+var _VehicleModel = require('./VehicleModel');
+
+var _VehicleModel2 = _interopRequireDefault(_VehicleModel);
+
+// Collectin is responsible for laoding all the data
+var vehicleCollection = _backbone2['default'].Collection.extend({
+
+  url: 'https://api.parse.com/1/classes/Vehicle',
+
+  model: VehicleModel,
+
+  parse: function parse(data) {
+    return data.results;
+  }
+
+});
+
+exports['default'] = vehicleCollection;
+module.exports = exports['default'];
+
+},{"./VehicleModel":1,"backbone":6}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -46,7 +138,20 @@ var vehicleModel = _backbone2['default'].Model.extend({
 exports['default'] = vehicleModel;
 module.exports = exports['default'];
 
-},{"backbone":3}],3:[function(require,module,exports){
+},{"backbone":6}],5:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function vehicleTemplate(data) {
+  return "\n    <li>" + data.Make + " is " + data.price + "  dollars</li>\n    ";
+}
+
+exports["default"] = vehicleTemplate;
+module.exports = exports["default"];
+
+},{}],6:[function(require,module,exports){
 (function (global){
 //     Backbone.js 1.2.3
 
@@ -1945,7 +2050,7 @@ module.exports = exports['default'];
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"jquery":4,"underscore":6}],4:[function(require,module,exports){
+},{"jquery":7,"underscore":9}],7:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -11157,7 +11262,7 @@ return jQuery;
 
 }));
 
-},{}],5:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 //! moment.js
 //! version : 2.10.6
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -14353,7 +14458,7 @@ return jQuery;
     return _moment;
 
 }));
-},{}],6:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -15903,7 +16008,7 @@ return jQuery;
   }
 }.call(this));
 
-},{}]},{},[1])
+},{}]},{},[2])
 
 
 //# sourceMappingURL=main.js.map
