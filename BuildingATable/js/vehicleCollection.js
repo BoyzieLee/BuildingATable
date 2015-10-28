@@ -1,5 +1,5 @@
 import Backbone from 'backbone';
-import vehicleModel from './VehicleModel';
+import VehicleModel from './vehicleModel';
 
 // Collectin is responsible for laoding all the data
 let vehicleCollection = Backbone.Collection.extend({
