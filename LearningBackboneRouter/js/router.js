@@ -8,6 +8,8 @@ import todosTemplate from './views/todosTemplate';
 
 let Router = Backbone.Router.extend({
 
+  // says were on the home page, let find the 'home' method,
+  // which is defined below.
   routes: {
     ""      : "home",
     "todos" : "showTodos",
@@ -16,6 +18,7 @@ let Router = Backbone.Router.extend({
   },
 
   initialize: function(appElement) {
+    // el is a property
     this.$el = appElement;
 
     this.todos = new TodosCollection();
@@ -62,7 +65,7 @@ let Router = Backbone.Router.extend({
   showAbout: function() {
     console.log('show about page');
   },
-
+  // this just looks for start intervals 
   start: function() {
     Backbone.history.start();
   }
